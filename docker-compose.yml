@@ -2,12 +2,8 @@ version: "3.8"
 
 services:
   portfolio:
-    image: portfolio:latest
+    image: praveen416/portfolio:latest
     container_name: portfolio
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8081:80"
     restart: always
-

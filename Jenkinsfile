@@ -20,7 +20,7 @@ pipeline{
         stage("Build"){
             steps{
                 script{
-                    build("portfolio","latest")
+                    dockerbuild("portfolio","latest")
                 }
             }
           

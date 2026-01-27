@@ -1,27 +1,21 @@
-@Library("Shared") _
+# for docker compose and push image to docker hub
+
 pipeline{
     agent { label "vinod" }
     stages{
-        stage("Hello"){
-            steps{
-                script{
-                    hello()
-                }
-            }
-        }
         stage("Code"){
             steps{
-                script{
-                    clone("https://github.com/Praveen48589/jenkins_testing.git", "main")
-                }
+                echo "This is cloning the Code"
+                git url: "https://github.com/Praveen48589/jenkins_testing.git", branch: "main"
+                echo "successfully cloning the Code"
             }
             
         }
         stage("Build"){
             steps{
-                script{
-                    build("portfolio","latest","praveen416")
-                }
+                echo "This is Building the Code"
+                sh "whoami"
+                sh "docker build -t portfolio:latest ."
             }
           
             

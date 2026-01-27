@@ -1,19 +1,27 @@
+@Library("Shared") _
 pipeline{
     agent { label "vinod" }
     stages{
+        stage("Hello"){
+            steps{
+                script{
+                    hello()
+                }
+            }
+        }
         stage("Code"){
             steps{
-                echo "This is cloning the Code"
-                git url: "https://github.com/Praveen48589/jenkins_testing.git", branch: "main"
-                echo "successfully cloning the Code"
+                script{
+                    clone("https://github.com/Praveen48589/jenkins_testing.git", "main")
+                }
             }
             
         }
         stage("Build"){
             steps{
-                echo "This is Building the Code"
-                sh "whoami"
-                sh "docker build -t portfolio:latest ."
+                script{
+                    build("portfolio","latest")
+                }
             }
           
             

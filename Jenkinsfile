@@ -1,5 +1,3 @@
-# for docker compose and push image to docker hub
-
 pipeline{
     agent { label "vinod" }
     stages{
